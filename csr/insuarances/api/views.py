@@ -1,6 +1,8 @@
+from django.http import HttpResponse
 from rest_framework.generics import ListAPIView, CreateAPIView
 from .serializers import CarInsuaranceSerializer, CarSerializer,CarMonitoringSerializer
 from insuarances.models import Car, CarInsuarance,CarMonitoring
+from rest_framework import viewsets
 
 
 class CarListApiView(ListAPIView):
@@ -39,3 +41,11 @@ class CarMonitoringListApiView(ListAPIView):
 class CarMonitoringCreateApiView(CreateAPIView):
     queryset = CarMonitoring.objects.all()
     serializer_class = CarMonitoringSerializer
+
+class CarMonitoringViewSet(viewsets.ModelViewSet):
+
+     def list(self, request):
+        queryset = CarMonitoring.objects.all().delete()
+        # serializer = UserSerializer(queryset, many=True)
+        # return Response(serializer.data) 
+        return HttpResponse('deleted successfully')
