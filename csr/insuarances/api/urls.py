@@ -5,7 +5,6 @@ from .views import CarListApiView, CarCreateApiView, CarInsuaranceListApiView, C
 urlpatterns = [
     path('cars', CarListApiView.as_view()),
     path('cars/create', CarCreateApiView.as_view()),
-
     # insuarance
     path('', CarInsuaranceListApiView.as_view()),
     path('create', CarInsuaranceCreateApiView.as_view()),
